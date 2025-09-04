@@ -7,11 +7,13 @@ import (
 	"github.com/go-kratos/kratos-layout/internal/biz"
 )
 
+// GRPC和HTTP服务都将调用这个服务
+
 // GreeterService is a greeter service.
 type GreeterService struct {
 	v1.UnimplementedGreeterServer
 
-	uc *biz.GreeterUsecase
+	uc *biz.GreeterUsecase // 业务逻辑层
 }
 
 // NewGreeterService new a greeter service.

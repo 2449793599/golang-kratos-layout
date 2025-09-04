@@ -74,9 +74,9 @@ func main() {
 		panic(err)
 	}
 
-	var bc conf.Bootstrap
+	var bc conf.Bootstrap // 配置对象
 
-	if err := c.Scan(&bc); err != nil {
+	if err := c.Scan(&bc); err != nil { // 扫描配置文件内容到配置对象
 		panic(err)
 	}
 
