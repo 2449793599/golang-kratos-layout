@@ -12,11 +12,13 @@ import (
 
 // NewHTTPServer new an HTTP server.
 func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.Logger) *http.Server {
+
 	var opts = []http.ServerOption{
 		http.Middleware(
 			recovery.Recovery(),
 		),
 	}
+
 	if c.Http.Network != "" {
 		opts = append(opts, http.Network(c.Http.Network))
 	}
@@ -26,7 +28,11 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.L
 	if c.Http.Timeout != nil {
 		opts = append(opts, http.Timeout(c.Http.Timeout.AsDuration()))
 	}
+
 	srv := http.NewServer(opts...)
+
 	v1.RegisterGreeterHTTPServer(srv, greeter)
+
 	return srv
+
 }
